@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tremendo Rumbón 2024</title>
+
+    <style>
+        #image0,#image1,#image2,#image3,#image4,#image5,
+        #image6,#image7,#image8,#image9,#image10,#image11,
+        #image12,#image13,#image14{
+            height:390px ;
+            width:370px;
+            position:absolute;
+            left:200px;
+        }
+        #nombre0,#nombre1,#nombre2,#nombre3,#nombre4,#nombre5,
+        #nombre6,#nombre7,#nombre8,#nombre9,#nombre10,#nombre11,
+        #nombre12,#nombre13,#nombre14{
+            font-size: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #d4b36d;
+        }
+        #titulo{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #d4b36d;;
+            
+        }
+
+        #btnNombre0,#btnNombre1,#btnNombre2,#btnNombre3,#btnNombre4,
+        #btnNombre5,#btnNombre6,#btnNombre7,#btnNombre8,#btnNombre9,
+        #btnNombre10,#btnNombre11,#btnNombre12,#btnNombre13,#btnNombre14{
+            cursor:pointer;
+            
+        }
+
+        #cuerpo{
+                background-color:#999494;
+                background: linear-gradient(to bottom right, rgba(46,13,36,255),#d4b36d);
+                
+                
+            }
+
+       
+
+    </style>
+
+</head>
+<body id="cuerpo">
+    <h1 id="titulo"> Tremendo Rumbón 2024</h1>
+    
+    <div id="contenedor">
+
+    </div>
+</body>
+
+<script>
+var txt = obtenerParametro('txt');
+var titulo=document.getElementById('titulo');
+titulo.textContent=titulo.textContent +" "+ txt;
+var rubrica;
+if(txt=='Salsa Bachata')
+    rubrica='SalsaBachata';
+else if(txt=='Rueda de Casino')
+    rubrica='RuedaCasino';
+else
+    rubrica='ShowStar';
+
+let nombres= ["Ana Sofía","Olach","Zainé","Jessica Quiles"];
+let name=new Array(nombres.length);
+let contenedor = document.getElementById('contenedor');// Obtener el contenedor donde se agregarán los bloques repetidos
+
+for (let i = 0; i < nombres.length; i++) {
+    // Crear un nuevo elemento div
+    let nuevoDiv = document.createElement('div');
+
+    // Agregar contenido al nuevo div
+    // Agregar el bloque de HTML al nuevo div
+    nuevoDiv.innerHTML = `
+        <button type="button" id="btnNombre${i}"> 
+            <img id="image${i}" src="images/${nombres[i]}.png">
+        </button> 
+        <label id="nombre${i}"> </label> 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    `;
+
+    // Agregar el nuevo div al contenedor
+    contenedor.appendChild(nuevoDiv);
+}
+
+for (let i=0;i<nombres.length;i++)
+    name[i]=document.getElementById('nombre'+i);
+
+for (let i=0;i<nombres.length;i++)
+    name[i].textContent=nombres[i];
+
+ // Eventos botones
+for (let i = 0; i <= nombres.length; i++) {
+    let boton = document.getElementById('btnNombre' + i);
+    if (boton !== null) {
+            boton.addEventListener('click', function() {
+                var texto = document.getElementById('nombre'+ i).textContent;
+                window.location.href = 'rubrica'+rubrica+'.html?texto=' + encodeURIComponent(texto);
+            });
+    }
+}
+
+function obtenerParametro(parametro) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parametro);
+    }
+
+</script>
+</html>

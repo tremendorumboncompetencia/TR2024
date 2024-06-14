@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="MobileOptimized" content="width" />
+
+	<title>Puntuaciones</title>
+	<style type="text/css">*,*:after,*:before{
+                margin:0;
+                padding:0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            #contenedor_carga{
+                background-color: rgba(250, 240, 245, 0);
+                height:100%;
+                width: 100%;
+                position: fixed;
+                -webkit-transition: all 1s ease;
+                -o-transition: all 1s ease;
+                transition: all 1s ease;
+                z-index:10000;
+                visibility:hidden;
+                opacity: '0';
+            }
+
+            #carga{
+                border:15px solid #ccc;
+                border-top-color:#F4266A ;
+                border-top-style:groove ;
+                height: 100px;
+                width: 100px;
+                border-radius: 100%;
+                position: absolute;
+                top:200px;
+                left:400px;
+                
+                margin:auto;
+                -webkit-animation: girar 1.5s linear infinite;
+                -o-animation: girar 1.5s linear infinite;
+                animation:girar 1.5s linear infinite;
+            }
+            @keyframes girar{
+                from{transform: rotate(0deg);}
+                to{transform: rotate(360deg);}
+            }
+
+          
+            #scroll-bg{
+                background: rgb(15,15,204);
+                width:100%;
+                margin:10% auto;
+                padding:30px;
+                border-radius:50px;
+            }
+
+            #scroll-div{
+                float:left;
+                width:30px;
+                background:rgb(17,17,105);
+                height:320px;
+                overflow:hidden;
+                overflow-y:scroll;
+            }
+            #scroll-object{
+                color:rgb(17,17,105);
+                font-family:cursive;
+                font-size:15px;
+                padding:20px;
+                
+            }
+            #grafica{
+                float:left;
+            }
+
+            #num1,#num2,#num3,#num4,#num5,#num6,#num7,#num8{
+                width:300px;
+                position: absolute;
+                left: 500px;
+                                  
+            }
+            
+            #tiempoMusical,#presentacionVisualVestuario,#tecnicaSalsaBachata,
+            #coreografiaMusicalidad,#proyeccionEscenica,#dificultadSincronizacion,
+            #presentacionVisual,#cubania{
+                font-size:20px;
+                position: absolute;
+                left: 865px;
+                                
+            }
+            #image1{
+                height:130px;
+                width: 130px;
+                position: absolute;
+                left:360px;
+                top:10px
+            }
+
+            #campo{
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color:rgb(169, 142, 10);
+            }
+            #competenciaN{
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color:aliceblue;
+            }
+            #cuerpo{
+                background-color:#999494;
+                background: linear-gradient(to bottom right, rgba(46,13,36,255),#d4b36d);   
+            }
+
+            #nombreJ{
+                color:aliceblue;  
+                text-shadow: 2px 2px#110000;
+                font-size: 25px;
+                left:20px;
+            }
+            
+            #nJuez{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-style: italic;
+                font-size: 24px;
+                background:linear-gradient(to bottom right, rgb(96, 97, 97),#f3f4f1);
+                color:rgb(2, 28, 66);
+                border-style: double;
+            }
+           #tiempoMusical,#presentacionVisualVestuario,#tecnicaSalsaBachata,#coreografiaMusicalidad,
+           #proyeccionEscenica,#dificultadSincronizacion,#presentacionVisual,#cubania{
+            color:#f5f1f1;
+            text-shadow: 2px 2px#110000;
+            font-size: 30px;
+
+           }
+           
+           #boton{
+            font-size: 20pt;
+            font-family: monospace;
+            font-style: italic;
+            cursor:pointer;
+            
+           }
+           #boton:active {
+            transform: scale(0.98);
+            /* Scaling button to 0.98 to its original size */
+            box-shadow: 3px 2px 50px 1px rgba(0, 0, 0, 0.5);
+            /* Lowering the shadow */
+            background-color: yellow;
+            
+          }
+
+          #preload{
+            height:88px;
+            width:400px;
+            background-color:#f6f2f2;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 30px;
+            position: absolute;
+            left:414px;
+            top: 300px;
+          }
+	</style>
+</head>
+<body id="cuerpo"><!--Config FireBase2 *******************************************************************************--><script type="module">
+
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyBBPAzWDxh9GeL_rRwueRe1x8wzkahUqlY",
+                authDomain: "tr2024-24dd1.firebaseapp.com",
+                projectId: "tr2024-24dd1",
+                storageBucket: "tr2024-24dd1.appspot.com",
+                messagingSenderId: "993588524959",
+                appId: "1:993588524959:web:859135f17733e8dfd26faa",
+                measurementId: "G-1M1EF74N8B"
+            };
+
+
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+            import {getDatabase,ref,set,child,update,remove,get,onValue} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+            const db=getDatabase();
+
+            
+            
+
+
+            var texto = obtenerParametro('texto');
+            var imagen = document.getElementById('image1');
+            var n1=document.getElementById('num1');
+            var n2=document.getElementById('num2');
+            var n3=document.getElementById('num3');
+            var n4=document.getElementById('num4');
+            var n5=document.getElementById('num5');
+            var n6=document.getElementById('num6');
+            var n7=document.getElementById('num7');
+            var n8=document.getElementById('num8');
+            var nJuez=document.getElementById('nJuez');
+            var notasId=document.getElementById('notas');
+            var nn1=document.getElementById('tiempoMusical');
+            var nn2=document.getElementById('tecnicaSalsaBachata');
+            var nn3=document.getElementById('coreografiaMusicalidad');
+            var nn4=document.getElementById('proyeccionEscenica');
+            var nn5=document.getElementById('presentacionVisualVestuario');
+            var nn6=document.getElementById('dificultadSincronizacion');
+            var nn7=document.getElementById('presentacionVisual');
+            var nn8=document.getElementById('cubania');
+            nJuez.value=texto;
+            imagen.src="images/"+texto+".png";
+            
+            
+
+            function InsertData(){
+
+
+                var contenedor=document.getElementById('contenedor_carga');
+                contenedor.style.visibility='visible';
+                let categSel=document.getElementById('competidorCategoria');
+                var cal=(Number.parseFloat(nn1.innerHTML)*0.20
+                        +Number.parseFloat(nn2.innerHTML)*0.15
+                        +Number.parseFloat(nn3.innerHTML)*0.15
+                        +Number.parseFloat(nn4.innerHTML)*0.15
+                        +Number.parseFloat(nn5.innerHTML)*0.10
+                        +Number.parseFloat(nn6.innerHTML)*0.10
+                        +Number.parseFloat(nn7.innerHTML)*0.10
+                        +Number.parseFloat(nn8.innerHTML)*0.05).toFixed(2);
+                var calificacion=cal.toString();
+                
+                
+                
+                
+                
+                
+                if(nn1.innerHTML=="" || nn2.innerHTML=="" ||nn3.innerHTML==""||nn4.innerHTML==""||nn5.innerHTML==""||nJuez.value==""){
+                    alert("LLENA TODOS LOS CAMPOS, CALIFICACIONES NO GUARDADAS");
+                }
+                else{   
+
+                            if(nn1.innerHTML<50 || nn1.innerHTML>100||nn2.innerHTML<50||nn2.innerHTML>100||nn3.innerHTML<50||nn3.innerHTML>100||nn4.innerHTML<50||nn4.innerHTML>100||nn5.innerHTML<50||nn5.innerHTML>100){
+                                alert("La calificación debe estar entre 0 y 10"); 
+
+                            }else{
+
+                            
+
+
+                                                    set(ref(db, "JUECES/"+nJuez.value),{
+                                                    
+                                                    a_juez:nJuez.value,
+                                                    b_tiempo:nn1.innerHTML,
+                                                    c_tecnica:nn2.innerHTML,
+                                                    d_musicalidad:nn3.innerHTML,
+                                                    e_dificultad:nn4.innerHTML,
+                                                    f_coregrafia_originalidad:nn5.innerHTML,
+                                                    g_interaccion_coordinacion:nn6.innerHTML,
+                                                    h_presencia_visual:nn7.innerHTML,
+                                                    i_cubania:nn8.innerHTML,
+                                                    j_calificacion:calificacion,
+                                                    k_notas:notasId.value
+                                                    
+                                                    
+                                                    
+                                                })
+                                                .then(()=>{
+                                                    contenedor.style.visibility='hidden';
+                                                    alert("CALIFICACIONES ALMACENADAS CON ÉXITO!!!!");
+                                                    n1.value=50;n2.value=50;n3.value=50;
+                                                    n4.value=50;n5.value=50;n6.value=50;
+                                                    n7.value=50;n8.value=50;
+                                                    nn1.innerHTML=50;nn2.innerHTML=50;nn3.innerHTML=50;
+                                                    nn4.innerHTML=50;nn5.innerHTML=50;nn6.innerHTML=50;
+                                                    nn7.innerHTML=50;nn8.innerHTML=50;
+                                                })
+                                                .catch((error)=>{
+                                                    alert("error al guardar"+error);
+                                                });
+                                                //borra campo notas
+                                                notas.value="";
+                                                
+                            }
+
+                }
+                
+                
+                
+                
+            };
+
+    function obtenerParametro(parametro) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parametro);
+    }
+
+    
+    boton.addEventListener('click',InsertData);
+            
+    //Eventos Barras
+
+    
+    n1.addEventListener('mousemove',function(e){
+        nn1.innerHTML=n1.value;   
+	});
+
+    n2.addEventListener('mousemove',function(e){
+        nn2.innerHTML=n2.value;  
+	});
+         
+    n3.addEventListener('mousemove',function(e){
+        nn3.innerHTML=n3.value; 
+	});
+
+    n4.addEventListener('mousemove',function(e){
+        nn4.innerHTML=n4.value;   
+	});
+
+    n5.addEventListener('mousemove',function(e){
+        nn5.innerHTML=n5.value;   
+	});
+    n6.addEventListener('mousemove',function(e){
+        nn6.innerHTML=n6.value;   
+	});
+
+    n7.addEventListener('mousemove',function(e){
+        nn7.innerHTML=n7.value;   
+	});
+
+    n8.addEventListener('mousemove',function(e){
+        nn8.innerHTML=n8.value;   
+	});
+
+    n1.addEventListener('touchmove',function(e){
+        nn1.innerHTML=n1.value;   
+	});
+
+    n2.addEventListener('touchmove',function(e){
+        nn2.innerHTML=n2.value;  
+	});
+
+    n3.addEventListener('touchmove',function(e){
+        nn3.innerHTML=n3.value;
+	});
+
+    n4.addEventListener('touchmove',function(e){
+        nn4.innerHTML=n4.value;  
+	});
+
+    n5.addEventListener('touchmove',function(e){
+        nn5.innerHTML=n5.value;  
+	});
+
+    n6.addEventListener('touchmove',function(e){
+        nn6.innerHTML=n6.value;  
+	});
+
+    n7.addEventListener('touchmove',function(e){
+        nn7.innerHTML=n7.value;  
+	});
+
+    n8.addEventListener('touchmove',function(e){
+        nn8.innerHTML=n8.value;  
+	});
+
+    n1.addEventListener('click',function(e){
+        nn1.innerHTML=n1.value;  
+	});
+
+    n2.addEventListener('click',function(e){
+        nn2.innerHTML=n2.value;
+	});
+
+    n3.addEventListener('click',function(e){
+        nn3.innerHTML=n3.value;   
+	});
+
+    n4.addEventListener('click',function(e){
+        nn4.innerHTML=n4.value;
+        
+	});
+    n5.addEventListener('click',function(e){
+        nn5.innerHTML=n5.value; 
+	});
+
+    n6.addEventListener('click',function(e){
+        nn6.innerHTML=n6.value; 
+	});
+
+    n7.addEventListener('click',function(e){
+        nn7.innerHTML=n7.value; 
+	});
+
+    n8.addEventListener('click',function(e){
+        nn8.innerHTML=n8.value; 
+	});
+
+    n1.addEventListener('touchenter',function(e){
+        nn1.innerHTML=n1.value;  
+	});
+
+    n2.addEventListener('touchenter',function(e){
+        nn2.innerHTML=n2.value;
+	});
+
+    n3.addEventListener('touchenter',function(e){
+        nn3.innerHTML=n3.value;   
+	});
+
+    n4.addEventListener('touchenter',function(e){
+        nn4.innerHTML=n4.value;
+        
+	});
+    n5.addEventListener('touchenter',function(e){
+        nn5.innerHTML=n5.value; 
+	});
+
+    n6.addEventListener('touchenter',function(e){
+        nn6.innerHTML=n6.value; 
+	});
+
+    n7.addEventListener('touchenter',function(e){
+        nn7.innerHTML=n7.value; 
+	});
+
+    n8.addEventListener('touchenter',function(e){
+        nn8.innerHTML=n8.value; 
+	});
+
+    n1.addEventListener('change',function(e){
+        nn1.innerHTML=n1.value; 
+        
+    });
+
+    n2.addEventListener('change',function(e){
+        nn2.innerHTML=n2.value; 
+       
+    });
+
+    n3.addEventListener('change',function(e){
+        nn3.innerHTML=n3.value; 
+        
+    });
+
+    n4.addEventListener('change',function(e){
+        nn4.innerHTML=n4.value; 
+        
+    });
+
+    n5.addEventListener('change',function(e){
+        nn5.innerHTML=n5.value; 
+        
+    });
+
+    n6.addEventListener('change',function(e){
+        nn6.innerHTML=n6.value; 
+        
+    });
+
+    n7.addEventListener('change',function(e){
+        nn7.innerHTML=n7.value; 
+        
+    });
+
+    n8.addEventListener('change',function(e){
+        nn8.innerHTML=n8.value; 
+        
+    });
+
+
+     
+          </script>
+<p id="competenciaN">Competencia Nacional</p>
+<img id="image1" src="olach.png" />
+<fieldset><br />
+<legend id="campo">Tremendo Rumbón 2024</legend>
+
+<div id="contenedor_carga">
+<div id="carga">&nbsp;</div>
+</div>
+<label id="nombreJ" style="height:68px;width:178px;; ">Nombre Juez: </label> <input id="nJuez" readonly="true" type="text" value="Angie Olach" /><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Tiempo  ---------------------------[20%]  </label> <input id="num1" max="100" min="50" step="5" type="range" value="50" /> <span id="tiempoMusical">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Técnica ---------------------------[15%] </label> <input id="num2" max="100" min="50" step="5" type="range" value="50" /> <span id="tecnicaSalsaBachata">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Musicalidad ----------------------[15%] </label> <input id="num3" max="100" min="50" step="5" type="range" value="50" /> <span id="coreografiaMusicalidad">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Dificultad-------------------------[15%] </label> <input id="num4" max="100" min="50" step="5" type="range" value="50" /> <span id="proyeccionEscenica">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Coreografía y Originalidad-----[10%]</label> <input id="num5" max="100" min="50" step="5" type="range" value="50" /> <span id="presentacionVisualVestuario">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Interacción/Coordinación-------[10%]</label> <input id="num6" max="100" min="50" step="5" type="range" value="50" /> <span id="dificultadSincronizacion">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Presentación Visual--------------[10%]</label> <input id="num7" max="100" min="50" step="5" type="range" value="50" /> <span id="presentacionVisual">50</span><br />
+<br />
+<br />
+<label id="nombreJ" style="height:68px;width:178px;">Cubanía----------------------------[5%]</label> <input id="num8" max="100" min="50" step="5" type="range" value="50" /> <span id="cubania">50</span><br />
+<br />
+<br />
+
+<button id="boton" style="height:68px;width:178px;">Calificar</button><br />
+<br />
+<label style="height:68px;width:178px;font-size: 15pt; ">Notas:</label><br />
+<textarea id="notas" style="height:368px;width:378px;font-size: 15pt; " text-align="right" type="text">            
+            </textarea><br />
+<br />
+<!-- 
+            <button id="botonCargar" style="height:68px;width:178px;font-size: 15pt; ">Cargar</button>--></fieldset>
+<!--<script src="main.js" ></script>--></body>
+</html>
