@@ -3,12 +3,12 @@
     "name": "My PWA 1st Prototype",
     "icons": [
       {
-        "src": "/images/Salsa Bachata 192.png",
+        "src": "images/Salsa Bachata 192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/images/Salsa Bachata 512.png",
+        "src": "images/Salsa Bachata 512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
