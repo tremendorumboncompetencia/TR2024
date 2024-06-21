@@ -12,6 +12,17 @@
             navigator.serviceWorker.register('sw.js');
             };
     </script>
+
+    <script>
+        function adjustBackgroundSize() {
+            const background = document.getElementById('background');
+            background.style.height = `${window.innerHeight}px`;
+        }
+
+        window.addEventListener('resize', adjustBackgroundSize);
+        window.addEventListener('orientationchange', adjustBackgroundSize);
+        document.addEventListener('DOMContentLoaded', adjustBackgroundSize);
+    </script>
     <title>Tremendo Rumbón 2024</title>
 
     <style>
